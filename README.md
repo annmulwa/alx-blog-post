@@ -1,1 +1,1 @@
-Blog Post Projecr App
+Blog Post Project App

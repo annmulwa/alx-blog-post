@@ -1,1 +1,0 @@
-Blog Post Project App

@@ -6,7 +6,8 @@ const Footer = () => {
         <footer>
             <img src={ Logo } alt="" />
             <span>
-                Made with ♥️ and <b>React.js</b>.
+                Made with ♥️, Sweat💧 and <b>React.js</b>.
+                #WeDoHardThings
             </span>
         </footer>
     )

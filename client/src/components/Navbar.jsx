@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {Link} from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 import Logo from "../img/logo.jpeg";
@@ -6,6 +6,7 @@ import Logo from "../img/logo.jpeg";
 const Navbar = () => {
 
     const { currentUser, logout } = useContext(AuthContext);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     return (
         <div className='navbar'>
@@ -15,7 +16,11 @@ const Navbar = () => {
                     <img src={ Logo } alt="" />
                     </Link>
                 </div>
-                <div className="links">
+
+                <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+                    <span>☰</span> {/* Hamburger icon */}
+                </div>
+                <div className={`links ${menuOpen ? 'open' : ''}`}>
                     <Link className='link' to="/?cat=art">
                         <h6>ART</h6>
                     </Link>
@@ -35,14 +40,14 @@ const Navbar = () => {
                         <h6>FOOD</h6>
                     </Link>
                     <span>{currentUser?.username}</span>
-                    {currentUser ? <span onClick={logout}>Logout</span> : <Link className='link' to="/login">Login</Link>}
+                    {currentUser ? (<span onClick={logout}>Logout</span> ): (<Link className='link' to="/login">Login</Link>)}
                     <span className="write">
                         <Link className="link" to="/write">Write</Link>
                     </span>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Navbar;

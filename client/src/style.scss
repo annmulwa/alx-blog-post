@@ -14,88 +14,129 @@ $lightGreen : #b9e7e7;
 
         //LOGIN & REGISTER
 
-        .auth{
+        .auth {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
             background-color: $lightGreen;
+            padding: 20px; // Added padding for smaller screens
 
-            h1{
-                font-size: 20px;
+            h1 {
+                font-size: 24px; // Increased font size
                 color: teal;
                 margin-bottom: 20px;
             }
 
-            form{
+            form {
                 display: flex;
                 flex-direction: column;
-                padding: 50px;
+                padding: 40px; // Adjusted padding
                 background-color: white;
-                width: 200px;
+                width: 100%; // Full width for small screens
+                max-width: 300px; // Max width for larger screens
                 gap: 20px;
+                border-radius: 8px; // Added border-radius for aesthetics
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Added shadow for depth
 
-                input{
+                input {
                     padding: 10px;
                     border: none;
                     border-bottom: 1px solid gray;
+                    font-size: 16px; // Increased font size for better readability
+
+                    @media (max-width: 480px) {
+                        font-size: 14px; // Adjust font size for mobile
+                    }
                 }
 
-                button{
+                button {
                     padding: 10px;
                     border: none;
                     background-color: teal;
                     cursor: pointer;
                     color: white;
+                    font-size: 16px; // Increased font size for buttons
+
+                    @media (max-width: 480px) {
+                        font-size: 14px; // Adjust font size for mobile
+                    }
                 }
 
-                p{
+                p {
                     font-size: 12px;
                     color: red;
                     text-align: center;
                 }
 
-                span{
+                span {
                     font-size: 12px;
                     text-align: center;
+                }
+            }
+
+            // Media Queries for additional responsiveness
+            @media (max-width: 768px) {
+                h1 {
+                    font-size: 22px; // Adjust heading size for tablet
+                }
+
+                form {
+                    width: 60%; // Make form responsive on tablets
+                    padding: 30px; // Adjust padding
+                }
+            }
+
+            @media (max-width: 480px) {
+                h1 {
+                    font-size: 20px; // Smaller heading for mobile
                 }
             }
         }
 
         //NAVBAR
 
-        .navbar{
-            .container{
-                padding: 10px 0px;
+        .navbar {
+            width: 85%;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+
+            .container {
+                padding: 10px 20px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                .logo{
-                    img{
-                        width: 200px;
+                flex-wrap: wrap; // Allow elements to wrap on smaller screens
+
+                .logo {
+                    img {
+                        width: 150px;
                         height: auto;
                         border-radius: 50%;
-                        //position: absolute;
-                        top: 70px;
-                        left: 20px;
                     }
                 }
-                .links{
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
 
-                    h6{
+                .hamburger {
+                    display: none; // Hidden by default on larger screens
+                    cursor: pointer;
+                    font-size: 24px;
+                }
+
+                .links {
+                    display: flex;
+                    gap: 20px;
+
+                    h6 {
                         font-size: 16px;
                         font-weight: 300;
                     }
 
-                    span{
+                    span {
                         cursor: pointer;
                     }
 
-                    .write{
+                    .write {
                         background-color: $lightGreen;
                         width: 50px;
                         height: 50px;
@@ -105,11 +146,75 @@ $lightGreen : #b9e7e7;
                         justify-content: center;
                         font-weight: 300;
                         border: 1px solid white;
+                        cursor: pointer;
+                        margin-top: -15px;
 
-                        &:hover{
+                        &:hover {
                             color: teal;
                             background-color: white;
                             border: 1px solid teal;
+                        }
+                    }
+                }
+            }
+
+            // Media Queries for responsiveness
+            @media (max-width: 768px) {
+                .hamburger {
+                    display: flex !important; // Show hamburger icon on smaller screens
+                    span {
+                        color: var($lightGreen);
+                    }
+                }
+
+                .links {
+                    display: none !important; // Hide links by default on smaller screens
+                    flex-direction: column !important;
+                    align-items: center !important;
+                    // align-items: flex-start !important;
+                    width: 100%;
+
+                    &.open {
+                        display: flex !important; // Show links when hamburger is clicked
+                    }
+
+                    h6 {
+                        font-size: 14px; // Smaller font size on smaller screens
+                    }
+
+                    .write {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+            }
+
+            @media (max-width: 480px) {
+                .container {
+                    // display: flex;
+                    flex-direction: row;
+                    // justify-content: space-between;
+                    // align-items: center;
+                    align-items: flex-start;
+
+                    .logo {
+                        margin-bottom: 10px;
+
+                        img {
+                            width: 100px; // Smaller logo for mobile screens
+                        }
+                    }
+
+                    .links {
+                        gap: 10px; // Reduce the gap between links on mobile
+
+                        h6 {
+                            font-size: 12px; // Further reduce font size for mobile
+                        }
+
+                        .write {
+                            width: 35px;
+                            height: 35px;
                         }
                     }
                 }
@@ -118,7 +223,7 @@ $lightGreen : #b9e7e7;
 
         //FOOTER
 
-        footer{
+        footer {
             margin-top: 100px;
             padding: 20px;
             background-color: $lightGreen;
@@ -126,36 +231,81 @@ $lightGreen : #b9e7e7;
             align-items: center;
             justify-content: space-between;
             font-size: 15px;
-            img{
+
+            img {
                 width: 120px;
                 height: auto;
                 border-radius: 50%;
+            }
+
+            span {
+                display: inline-block;
+                font-size: 15px;
+                text-align: right;
+                line-height: 1.5;
+            }
+
+            // Media queries for responsiveness
+
+            @media (max-width: 768px) {
+                flex-direction: column; // Stack items vertically
+                align-items: center; // Center align items
+
+                img {
+                    width: 100px; // Adjust logo size for smaller screens
+                    margin-bottom: 15px;
+                }
+
+                span {
+                    text-align: center; // Center align the text
+                    font-size: 14px; // Slightly smaller font on smaller screens
+                }
+            }
+
+            @media (max-width: 480px) {
+                padding: 15px;
+                margin-top: 50px;
+
+                img {
+                    width: 80px; // Further reduce the logo size for mobile devices
+                }
+
+                span {
+                    font-size: 12px; // Reduce font size for mobile
+                    line-height: 1.4;
+                }
             }
         }
 
         //HOME PAGE
 
-        .home{
+        .home {
+            padding: 20px;
 
-            .posts{
+            .posts {
                 margin-top: 50px;
                 display: flex;
                 flex-direction: column;
-                gap: 150px;
+                gap: 50px; // Adjusted the gap for smaller screens
 
-                .post{
+                .post {
                     display: flex;
-                    gap: 100px;
+                    gap: 50px; // Reduced the gap for smaller screens
+                    flex-wrap: wrap; // Ensures the content wraps properly on smaller screens
 
                     &:nth-child(2n+1) {
                         flex-direction: row-reverse;
+
+                        @media (max-width: 768px) {
+                            flex-direction: column;
+                        }
                     }
 
                     .img {
                         flex: 2;
                         position: relative;
 
-                        &::after{
+                        &::after {
                             content: "";
                             width: 100%;
                             height: 100%;
@@ -164,30 +314,47 @@ $lightGreen : #b9e7e7;
                             top: 20px;
                             left: -20px;
                             z-index: -1;
+
+                            @media (max-width: 768px) {
+                                top: 10px;
+                                left: -10px;
+                            }
                         }
 
-                        img{
+                        img {
                             width: 100%;
                             max-height: 400px;
                             object-fit: cover;
+
+                            @media (max-width: 768px) {
+                                max-height: 300px; // Reduce height on smaller screens
+                            }
                         }
                     }
 
-                    .content{
+                    .content {
                         flex: 3;
                         display: flex;
                         flex-direction: column;
                         justify-content: space-between;
 
-                        h1{
-                            font-size: 48px;
+                        h1 {
+                            font-size: 2.5rem;
+
+                            @media (max-width: 768px) {
+                                font-size: 1.75rem; // Adjust heading size for smaller screens
+                            }
                         }
 
-                        p{
-                            font-size: 18px;
+                        p {
+                            font-size: 1.1rem;
+
+                            @media (max-width: 768px) {
+                                font-size: 1rem; // Adjust paragraph size for smaller screens
+                            }
                         }
 
-                        button{
+                        button {
                             width: max-content;
                             padding: 10px 20px;
                             border: none;
@@ -196,10 +363,67 @@ $lightGreen : #b9e7e7;
                             border: 1px solid teal;
                             color: teal;
 
-                            &:hover{
+                            &:hover {
                                 border: 1px solid white;
                                 background-color: $lightGreen;
                                 color: black;
+                            }
+
+                            @media (max-width: 768px) {
+                                padding: 8px 16px; // Adjust button padding for smaller screens
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Media query for small screens
+            @media (max-width: 768px) {
+                .posts {
+                    gap: 30px; // Reduce gap between posts on smaller screens
+
+                    .post {
+                        flex-direction: column; // Stack posts vertically
+
+                        .img {
+                            margin-bottom: 15px; // Add space between the image and content
+                            margin-top: 10px;
+                        }
+
+                        .content {
+                            h1 {
+                                font-size: 1.75rem; // Reduce heading size
+                            }
+
+                            p {
+                                font-size: 1rem; // Reduce paragraph size
+                            }
+
+                            button {
+                                padding: 8px 16px; // Adjust button size
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Media query for extra small screens (mobile)
+            @media (max-width: 480px) {
+                .posts {
+                    gap: 20px; // Even smaller gap for mobile devices
+
+                    .post {
+                        .content {
+                            h1 {
+                                font-size: 1.5rem; // Further reduce heading size for mobile
+                            }
+
+                            p {
+                                font-size: 0.9rem; // Adjust paragraph size for mobile
+                            }
+
+                            button {
+                                padding: 6px 12px; // Smaller button padding for mobile
                             }
                         }
                     }
@@ -207,19 +431,21 @@ $lightGreen : #b9e7e7;
             }
         }
 
+
         //SINGLE PAGE
 
-        .single{
+        .single {
             display: flex;
             gap: 50px;
+            flex-wrap: wrap; // Allow items to wrap on smaller screens
 
-            .content{
+            .content {
                 flex: 5;
                 display: flex;
                 flex-direction: column;
                 gap: 30px;
 
-                img{
+                img {
                     width: 100%;
                     height: 300px;
                     object-fit: cover;
@@ -230,6 +456,7 @@ $lightGreen : #b9e7e7;
                     align-items: center;
                     gap: 10px;
                     font-size: 14px;
+
                     img {
                         width: 50px;
                         height: 50px;
@@ -237,60 +464,60 @@ $lightGreen : #b9e7e7;
                         object-fit: cover;
                     }
 
-                    span{
+                    span {
                         font-weight: bold;
                     }
                 }
 
-                .edit{
+                .edit {
                     display: flex;
                     gap: 5px;
 
-                    img{
+                    img {
                         width: 20px;
                         height: 20px;
                         cursor: pointer;
                     }
                 }
 
-                h1{
+                h1 {
                     font-size: 42px;
                     color: #333;
                 }
 
-                p{
+                p {
                     text-align: justify;
                     line-height: 30px;
                 }
             }
 
-            .menu{
+            .menu {
                 flex: 2;
                 display: flex;
                 flex-direction: column;
                 gap: 25px;
 
-                h1{
+                h1 {
                     font-size: 20px;
                     color: #555;
                 }
 
-                .post{
+                .post {
                     display: flex;
                     flex-direction: column;
                     gap: 10px;
 
-                    img{
+                    img {
                         width: 100%;
                         height: 200px;
                         object-fit: cover;
                     }
 
-                    h2{
+                    h2 {
                         color: #555;
                     }
 
-                    button{
+                    button {
                         width: max-content;
                         padding: 7.5px 15px;
                         border: none;
@@ -299,10 +526,62 @@ $lightGreen : #b9e7e7;
                         border: 1px solid teal;
                         color: teal;
 
-                        &:hover{
+                        &:hover {
                             border: 1px solid white;
                             background-color: $lightGreen;
                             color: black;
+                        }
+                    }
+                }
+            }
+
+            // Media Queries for responsiveness
+            @media (max-width: 768px) {
+                flex-direction: column; // Stack content on smaller screens
+                gap: 20px; // Adjust gap between items
+
+                .content {
+                    h1 {
+                        font-size: 36px; // Smaller title for mobile
+                    }
+
+                    p {
+                        line-height: 24px; // Adjust line height for mobile
+                    }
+                }
+
+                .menu {
+                    flex: 1; // Take full width on smaller screens
+                }
+            }
+
+            @media (max-width: 480px) {
+                .content {
+                    h1 {
+                        font-size: 26px; // Further reduce title size for mobile
+                    }
+
+                    p {
+                        line-height: 20px; // Further adjust line height
+                    }
+
+                    .user {
+                        font-size: 12px; // Reduce user info font size
+                    }
+                }
+
+                .menu {
+                    h1 {
+                        font-size: 18px; // Smaller heading for mobile
+                    }
+
+                    .post {
+                        img {
+                            height: 150px; // Adjust image size for mobile
+                        }
+
+                        h2 {
+                            font-size: 16px; // Smaller post title
                         }
                     }
                 }
@@ -311,41 +590,44 @@ $lightGreen : #b9e7e7;
 
         //WRITE PAGE
 
-        .add{
+        .add {
             margin-top: 20px;
             display: flex;
             gap: 20px;
+            flex-wrap: wrap; // Allow wrapping on smaller screens
 
-            .content{
+            .content {
                 flex: 5;
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
 
-                input{
+                input {
                     padding: 10px;
                     border: 1px solid lightgray;
+                    border-radius: 4px; // Added border-radius for aesthetics
                 }
 
-                .editorContainer{
+                .editorContainer {
                     height: 300px;
                     overflow: scroll;
                     border: 1px solid lightgray;
+                    border-radius: 4px; // Added border-radius for aesthetics
 
-                    .editor{
+                    .editor {
                         height: 100%;
                         border: none;
                     }
                 }
             }
 
-            .menu{
+            .menu {
                 flex: 2;
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
 
-                .item{
+                .item {
                     border: 1px solid lightgray;
                     padding: 10px;
                     flex: 1;
@@ -355,38 +637,40 @@ $lightGreen : #b9e7e7;
                     font-size: 12px;
                     color: #555;
 
-                    h1{
+                    h1 {
                         font-size: 20px;
                     }
 
-                    .file{
+                    .file {
                         text-decoration: underline;
                         cursor: pointer;
                     }
 
-                    .buttons{
+                    .buttons {
                         display: flex;
                         justify-content: space-between;
 
-                        :first-child{
+                        button {
                             cursor: pointer;
-                            color: teal;
-                            background-color: white;
-                            border: 1px solid teal;
                             padding: 3px 5px;
-                            margin-top: 5px;
-                        }
-                        :last-child{
-                            cursor: pointer;
-                            color: white;
-                            background-color: teal;
-                            border: 1px solid teal;
-                            padding: 3px 5px;
-                            margin-top: 5px;
+                            border-radius: 4px; // Added border-radius for aesthetics
+
+                            &:first-child {
+                                color: teal;
+                                background-color: white;
+                                border: 1px solid teal;
+                                margin-top: 5px;
+                            }
+                            &:last-child {
+                                color: white;
+                                background-color: teal;
+                                border: 1px solid teal;
+                                margin-top: 5px;
+                            }
                         }
                     }
 
-                    .cat{
+                    .cat {
                         display: flex;
                         align-items: center;
                         gap: 2px;
@@ -394,6 +678,58 @@ $lightGreen : #b9e7e7;
                     }
                 }
             }
+
+            // Media Queries for responsiveness
+            @media (max-width: 768px) {
+                flex-direction: column; // Stack content on smaller screens
+
+                .content {
+                    input {
+                        font-size: 14px; // Adjust font size for mobile
+                    }
+
+                    .editorContainer {
+                        height: 200px; // Reduce height on mobile
+                    }
+                }
+
+                .menu {
+                    flex: 1; // Take full width on smaller screens
+                }
+            }
+
+            @media (max-width: 480px) {
+                .content {
+                    input {
+                        font-size: 12px; // Further adjust font size for mobile
+                    }
+
+                    .editorContainer {
+                        height: 150px; // Further reduce height on mobile
+                    }
+                }
+
+                .menu {
+                    .item {
+                        font-size: 10px; // Smaller font size for mobile
+                        h1 {
+                            font-size: 16px; // Smaller heading for mobile
+                        }
+                    }
+                }
+            }
         }
     }
+
+    @media (max-width: 480px) {
+        .container {
+            width: 100% !important;
+        }
+    }
+
+    // @media (max-width: 768px) {
+    //     .container {
+    //         width: 100% !important;
+    //     }
+    // }
 }

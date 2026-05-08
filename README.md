@@ -94,5 +94,3 @@ This project is licensed under the [MIT License](LICENSE).
 - **Tevin Owena**: tevinowena@gmail.com
 
 ---
-
-Feel free to adjust any sections as needed. Let me know if you need further modifications!
